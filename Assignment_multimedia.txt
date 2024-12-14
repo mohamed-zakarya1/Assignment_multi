@@ -1,0 +1,8 @@
+import cv2
+import numpy as np
+from scipy.signal import wiener
+image = cv2.imread('MRI_of_Human_Brain.jpg', cv2.IMREAD_GRAYSCALE)
+denoised_image = wiener(image, (5, 5))
+equalized_image = cv2.equalizeHist(image)
+cv2.imwrite('denoised_image.jpeg', denoised_image)
+cv2.imwrite('equalized_image.jpeg', equalized_image)
